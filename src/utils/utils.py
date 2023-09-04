@@ -65,7 +65,8 @@ def task_wrapper(task_func: Callable) -> Callable:
     def wrap(cfg: DictConfig) -> Tuple[Dict[str, Any], Dict[str, Any]]:
         # execute the task
         try:
-            metric_dict, object_dict = task_func(cfg=cfg)
+            # metric_dict, object_dict = task_func(cfg=cfg)
+            object_dict = task_func(cfg=cfg)
 
         # things to do if exception occurs
         except Exception as ex:
@@ -90,7 +91,7 @@ def task_wrapper(task_func: Callable) -> Callable:
                     log.info("Closing wandb!")
                     wandb.finish()
 
-        return metric_dict, object_dict
+        return object_dict
 
     return wrap
 

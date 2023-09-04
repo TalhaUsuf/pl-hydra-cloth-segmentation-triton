@@ -78,25 +78,32 @@ def train(cfg: DictConfig) -> Tuple[Dict[str, Any], Dict[str, Any]]:
         log.info("Starting training!")
         trainer.fit(model=model, datamodule=datamodule, ckpt_path=cfg.get("ckpt_path"))
 
-    train_metrics = trainer.callback_metrics
-
-    if cfg.get("test"):
-        log.info("Starting testing!")
-        ckpt_path = trainer.checkpoint_callback.best_model_path
-        if ckpt_path == "":
-            log.warning("Best ckpt not found! Using current weights for testing...")
-            ckpt_path = None
-        trainer.test(model=model, datamodule=datamodule, ckpt_path=ckpt_path)
-        log.info(f"Best ckpt path: {ckpt_path}")
-
-    test_metrics = trainer.callback_metrics
+    # train_metrics = trainer.callback_metrics
+    #
+    # if cfg.get("test"):
+    #     log.info("Starting testing!")
+    #     ckpt_path = trainer.checkpoint_callback.best_model_path
+    #     if ckpt_path == "":
+    #         log.warning("Best ckpt not found! Using current weights for testing...")
+    #         ckpt_path = None
+    #     trainer.test(model=model, datamodule=datamodule, ckpt_path=ckpt_path)
+    #     log.info(f"Best ckpt path: {ckpt_path}")
+    #
+    # test_metrics = trainer.callback_metrics
 
     # merge train and test metrics
-    metric_dict = {**train_metrics, **test_metrics}
+    # metric_dict = {**train_metrics, **test_metrics}
 
-    return metric_dict, object_dict
+    # return metric_dict, object_dict
+    return object_dict
 
 
+# ===============================================================
+#                        MAIN function
+# ===============================================================
+
+
+# use train.yaml cfg from ../configs folder to be used for training
 @hydra.main(version_base="1.3", config_path="../configs", config_name="train.yaml")
 def main(cfg: DictConfig) -> Optional[float]:
     """Main entry point for training.
@@ -109,15 +116,17 @@ def main(cfg: DictConfig) -> Optional[float]:
     utils.extras(cfg)
 
     # train the model
-    metric_dict, _ = train(cfg)
+    # metric_dict, _ = train(cfg)
+    cfg_dict = train(cfg)
 
-    # safely retrieve metric value for hydra-based hyperparameter optimization
-    metric_value = utils.get_metric_value(
-        metric_dict=metric_dict, metric_name=cfg.get("optimized_metric")
-    )
-
-    # return optimized metric
-    return metric_value
+    # # safely retrieve metric value for hydra-based hyperparameter optimization
+    # metric_value = utils.get_metric_value(
+    #     metric_dict=metric_dict, metric_name=cfg.get("optimized_metric")
+    # )
+    #
+    # # return optimized metric
+    # return metric_value
+    return cfg_dict
 
 
 if __name__ == "__main__":
