@@ -1,0 +1,9 @@
+_target_: src.data.viton_hd_dm.ds_module
+
+# define all the class arguments here
+
+root : "viton_hd"
+stage : 'train'
+paired_unpaired : 'paired'
+bs : 16
+workers : 12
