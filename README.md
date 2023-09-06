@@ -3,7 +3,10 @@
 
 This code uses pl-lightning + hydra to train a cloth segmentation unet model using DDP multi-gpu strategy by using the 11k training samples from VTON_HD dataset.
 
-All configurations are controlled via cfg files located inside [configs](configs) folder.
+
+>**Note:** Weights will be released soon, I am training on colab and donot have access to high end GPU
+
+All configurations are controlled via cfg files located inside [configs](configs) folder. Rather than changing the code, just pass args using cli (as shown below) or change the cfg files to change the training behavior.
 
 ```bash
 configs/
