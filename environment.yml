@@ -1,4 +1,4 @@
-name: gjh_ldm
+name: segment_vton
 channels:
   - pytorch
   - defaults
@@ -278,4 +278,4 @@ dependencies:
       - werkzeug==2.3.7
       - yarl==1.9.2
       - zipp==3.16.2
-prefix: /home/sabbih/anaconda3/envs/gjh_ldm
+
