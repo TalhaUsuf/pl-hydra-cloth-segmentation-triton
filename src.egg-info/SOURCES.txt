@@ -4,6 +4,7 @@ setup.py
 configs/__init__.py
 src/__init__.py
 src/eval.py
+src/inference.py
 src/train.py
 src.egg-info/PKG-INFO
 src.egg-info/SOURCES.txt

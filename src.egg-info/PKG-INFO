@@ -5,3 +5,5 @@ Summary: Describe Your Cool Project
 Home-page: https://github.com/user/project
 Author: 
 Author-email: 
+Requires-Dist: lightning
+Requires-Dist: hydra-core

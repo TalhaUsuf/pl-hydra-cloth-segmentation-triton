@@ -1,0 +1,19 @@
+defaults:
+  - _self_
+  - data: viton_dataset
+  - model: viton_segment_model
+  - callbacks: none
+  - logger: wandb # set logger here or use command line (e.g. `python train.py logger=tensorboard`)
+  - trainer: gpu
+  - paths: default
+  - extras: default
+  - hydra: default
+
+
+
+# task name, determines output directory path
+task_name: "test"
+
+ckpt_path: ./ckpts/fine_epoch=9-train_dataset_iou=0.9847634434700012.ckpt
+images_folder: viton_hd/test/cloth
+save_dir: ./results
