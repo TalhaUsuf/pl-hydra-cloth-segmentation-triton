@@ -189,10 +189,10 @@ You can provide following encoder blocks names:
 # TO DO
 I am working on following features:
 
- - [ ] Add more backbone encoders
+ - [x] Add more backbone encoders
  - [ ] **Make model transformers api compatible**
- - [ ] Add model prediction code and results
- - [ ] Add pretrained model weights links
+ - [x] Add model prediction code and results
+ - [x] Add pretrained model weights links
  - [ ] Add onnx model export code + Nvidia Triton inference server + Docker Compose
 
 
