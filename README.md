@@ -141,6 +141,23 @@ python src/train.py trainer.max_epochs=20 data.bs=64  data.workers=8 data.paired
 ```bash
 python src/train.py trainer.max_epochs=20 model.encoder_name='resnet50'
 ```
+
+
+# Inference
+
+Either edit [configs\inference.yaml](configs/inference.yaml) or pass args from cli like:
+
+```bash
+python   ./src/inference.py    images_folder="inference_images"
+```
+
+
+| Original image of cloth | Segmented image |
+| ----------------------- | --------------- |
+|  ![](inference_images\download.jpg)                       |     ![](results\download.jpg)            |
+
+
+
 # Configure backbone encoders
 
 You can provide following encoder blocks names:
